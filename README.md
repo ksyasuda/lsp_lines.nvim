@@ -1,3 +1,10 @@
+# Introduction
+
+This is a clone of [this](https://git.sr.ht/~whynothugo/lsp_lines.nvim) repo,
+created by Hugo Osvaldo Barrera, and is hosted on sourcehut.
+In order to make it compatible with vim-plug, I've cloned the repo and set the
+upstream here
+
 # lsp_lines.nvim
 
 `lsp_lines` is a simple neovim plugin that renders diagnostics using virtual
@@ -24,6 +31,12 @@ using virtual lines for the currently focused line, but that requires some
 extra work I haven't had the time for.
 
 # Installation
+
+Using [vim-plug](https://github.com/junegunn/vim-plug)
+
+```vim
+Plug 'ksyasuda/lsp_lines.nvim'
+```
 
 Using packer.nvim (should probably be registered _after_ `lspconfig`):
 
@@ -69,8 +82,8 @@ vim.diagnostic.config({ virtual_lines = { prefix = "🔥" } })
 # Contributing
 
 - Discussion or patches: ~whynothugo/lsp_lines.nvim@lists.sr.ht
-- Issues: https://todo.sr.ht/~whynothugo/lsp_lines.nvim
-- Tips: https://ko-fi.com/whynothugo
+- Issues: <https://todo.sr.ht/~whynothugo/lsp_lines.nvim>
+- Tips: <https://ko-fi.com/whynothugo>
 
 # Licence
 
