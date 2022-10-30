@@ -12,23 +12,21 @@ lines on top of the real line of code.
 
 ![A screenshot of the plugin in action](screenshot.png)
 
+Font is [Fira Code][font], a classic.
+Theme is [tokyonight.nvim][theme].
+
+[font]: https://github.com/tonsky/FiraCode
+[theme]: https://github.com/folke/tokyonight.nvim
+
 # Background
 
 LSPs provide lots of useful diagnostics for code (typically: errors, warnings,
 linting). By default they're displayed using virtual text at the end of the
 line which is in many cases good enough, but often there's more than one
-diagnostic per line, or there's a very long diagnostic, and there's no handy
-way to read the whole thing.
+diagnostic per line. It's also quite common to have more than one diagnostic
+per line, but again, there's no handy way to read the whole thing.
 
-`lsp_lines` seeks to solve this issue.
-
-# Development
-
-This works well in its current state. Please report any issues you may find.
-
-I've considered using the normal virtual text for all diagnostics and only
-using virtual lines for the currently focused line, but that requires some
-extra work I haven't had the time for.
+`lsp_lines` solves this issue.
 
 # Installation
 
@@ -40,14 +38,32 @@ Plug 'ksyasuda/lsp_lines.nvim'
 
 Using packer.nvim (should probably be registered _after_ `lspconfig`):
 
+## With packer.nvim
+
+Using packer.nvim (this should probably be registered _after_ `lspconfig`):
+
 ```lua
 use({
   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   config = function()
-    require("lsp_lines").register_lsp_virtual_lines()
+    require("lsp_lines").setup()
   end,
 })
 ```
+
+## With git
+
+You can algo just clone the repo into neovim's plug-in directory:
+
+    mkdir -p $HOME/.local/share/nvim/site/pack/plugins/start/
+    cd $HOME/.local/share/nvim/site/pack/plugins/start/
+    git clone git@git.sr.ht:~whynothugo/lsp_lines.nvim
+
+And then in `init.lua`:
+
+    require("lsp_lines").setup()
+
+# Setup
 
 It's recommended to also remove the regular virtual text diagnostics to avoid
 pointless duplication:
@@ -59,7 +75,7 @@ vim.diagnostic.config({
 })
 ```
 
-# Configuration
+# Usage
 
 This plugin's functionality can be disabled with:
 
@@ -73,10 +89,21 @@ And it can be re-enabled via:
 vim.diagnostic.config({ virtual_lines = true })
 ```
 
-The prefix icon shown to the left of diagnostics can be configured with:
+To show virtual lines only for the current line's diagnostics:
 
 ```lua
-vim.diagnostic.config({ virtual_lines = { prefix = "🔥" } })
+vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+```
+
+A helper is also provided to toggle, which is convenient for mappings:
+
+```lua
+vim.keymap.set(
+  "",
+  "<Leader>l",
+  require("lsp_lines").toggle,
+  { desc = "Toggle lsp_lines" }
+)
 ```
 
 # Contributing
@@ -84,6 +111,13 @@ vim.diagnostic.config({ virtual_lines = { prefix = "🔥" } })
 - Discussion or patches: ~whynothugo/lsp_lines.nvim@lists.sr.ht
 - Issues: <https://todo.sr.ht/~whynothugo/lsp_lines.nvim>
 - Tips: <https://ko-fi.com/whynothugo>
+- Bugs / Issues: <https://todo.sr.ht/~whynothugo/lsp_lines.nvim>
+
+# Development
+
+It would be nice to show connecting lines when there's relationship between
+diagnostics (as is the case with `rust_analyzer`). Oh perhaps surface them via
+hover().
 
 # Licence
 
