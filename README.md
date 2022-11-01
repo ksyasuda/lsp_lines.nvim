@@ -1,9 +1,15 @@
 # Introduction
 
-This is a clone of [this](https://git.sr.ht/~whynothugo/lsp_lines.nvim) repo,
+Just a clone of [this](https://git.sr.ht/~whynothugo/lsp_lines.nvim) repo,
 created by Hugo Osvaldo Barrera, and is hosted on sourcehut.
-In order to make it compatible with vim-plug, I've cloned the repo and set the
-upstream here
+
+This repo was originally created for compatability with vim-plug; however, I've
+since learned (#2) that vim-plug is able to handle any valid git url,
+so there is no need for this repository to exist.
+
+I will keep the repo up for some time to provide backwards compatability with
+old configurations making use of this repo, as well as providing
+some small amount of visibility to this project
 
 # lsp_lines.nvim
 
@@ -44,7 +50,7 @@ Using packer.nvim (this should probably be registered _after_ `lspconfig`):
 
 ```lua
 use({
-  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  "https://github.com/ksyasuda/lsp_lines.nvim",
   config = function()
     require("lsp_lines").setup()
   end,
@@ -57,7 +63,7 @@ You can algo just clone the repo into neovim's plug-in directory:
 
     mkdir -p $HOME/.local/share/nvim/site/pack/plugins/start/
     cd $HOME/.local/share/nvim/site/pack/plugins/start/
-    git clone git@git.sr.ht:~whynothugo/lsp_lines.nvim
+    git clone https://github.com/ksyasuda/lsp_lines.nvim
 
 And then in `init.lua`:
 
