@@ -4,8 +4,8 @@ Just a clone of [this](https://git.sr.ht/~whynothugo/lsp_lines.nvim) repo,
 created by Hugo Osvaldo Barrera, and is hosted on sourcehut.
 
 This repo was originally created for compatability with vim-plug; however, I've
-since learned (#2) that vim-plug is able to handle any valid git url,
-so there is no need for this repository to exist.
+since learned [#1](https://github.com/ksyasuda/lsp_lines.nvim/issues/1) that vim-plug is able to handle any valid git url,
+so there is no need for this repository to exist
 
 I will keep the repo up for some time to provide backwards compatability with
 old configurations making use of this repo, as well as providing
